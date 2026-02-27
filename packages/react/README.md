@@ -26,4 +26,4 @@ export function Button() {
 - `useNoiseEffect`
 
 For full docs and demos, see:
-https://github.com/snwol/protoeffects
+https://github.com/protohiro-com/effects

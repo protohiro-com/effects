@@ -20,4 +20,4 @@ npm install @protohiro/effects-core
 - `toCssNumber`
 
 For full project docs and examples, see:
-https://github.com/snwol/protoeffects
+https://github.com/protohiro-com/effects

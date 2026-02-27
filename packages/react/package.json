@@ -9,12 +9,12 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snwol/protoeffects.git",
+    "url": "git+https://github.com/protohiro-com/effects.git",
     "directory": "packages/react"
   },
-  "homepage": "https://github.com/snwol/protoeffects#readme",
+  "homepage": "https://github.com/protohiro-com/effects#readme",
   "bugs": {
-    "url": "https://github.com/snwol/protoeffects/issues"
+    "url": "https://github.com/protohiro-com/effects/issues"
   },
   "keywords": ["protoeffects", "react", "hooks", "css", "effects"],
   "publishConfig": {
