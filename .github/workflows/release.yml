@@ -5,8 +5,13 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
+    if: github.repository == 'protohiro-com/effects'
     runs-on: ubuntu-latest
     permissions:
       contents: write
