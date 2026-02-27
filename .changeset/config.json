@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.3/schema.json",
-  "changelog": ["@changesets/cli/changelog", { "repo": "snwol/protoeffects" }],
+  "changelog": ["@changesets/cli/changelog", { "repo": "protohiro-com/effects" }],
   "commit": false,
   "fixed": [],
   "linked": [],

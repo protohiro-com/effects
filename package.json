@@ -1,7 +1,7 @@
 {
   "name": "protohiro-effects-monorepo",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-wrapper React CSS effects engine.",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
