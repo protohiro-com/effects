@@ -1,6 +1,6 @@
 {
   "name": "@protohiro/effects-core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Core runtime utilities for ProtoEffects CSS-first effects.",
   "license": "MIT",
   "type": "module",
@@ -16,7 +16,13 @@
   "bugs": {
     "url": "https://github.com/protohiro-com/effects/issues"
   },
-  "keywords": ["protoeffects", "css", "effects", "runtime", "utilities"],
+  "keywords": [
+    "protoeffects",
+    "css",
+    "effects",
+    "runtime",
+    "utilities"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -27,7 +33,10 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
