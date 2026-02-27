@@ -1,0 +1,44 @@
+{
+  "name": "@protoeffects/react",
+  "version": "0.1.0",
+  "description": "Zero-wrapper React hooks for composable CSS effects.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snwol/protoeffects.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/snwol/protoeffects#readme",
+  "bugs": {
+    "url": "https://github.com/snwol/protoeffects/issues"
+  },
+  "keywords": ["protoeffects", "react", "hooks", "css", "effects"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist", "README.md"],
+  "sideEffects": false,
+  "dependencies": {
+    "@protoeffects/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

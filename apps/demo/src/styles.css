@@ -1,0 +1,245 @@
+:root {
+  font-family: "Space Grotesk", "Avenir Next", sans-serif;
+  color: #e2e8f0;
+  background:
+    radial-gradient(circle at 5% 0%, rgba(14, 116, 144, 0.24), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(20, 184, 166, 0.17), transparent 35%),
+    #060b16;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #dbe7ff;
+  background: inherit;
+}
+
+.demo-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.7rem 1rem 3rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  letter-spacing: 0.01em;
+}
+
+.demo-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.demo-hero p {
+  margin: 0.75rem 0 0;
+  max-width: 860px;
+  color: #9eb2d5;
+  line-height: 1.45;
+}
+
+.demo-badges {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.demo-badge {
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.27);
+  background: rgba(7, 16, 35, 0.8);
+  padding: 0.35rem 0.72rem;
+  font-size: 0.76rem;
+  color: #c7d7f5;
+}
+
+.demo-usage {
+  margin-top: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 14px;
+  background: linear-gradient(140deg, rgba(8, 20, 43, 0.85), rgba(7, 14, 28, 0.92));
+  padding: 0.9rem 1rem;
+}
+
+.demo-usage h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+.demo-usage ol {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.2rem;
+  color: #9eb2d5;
+  font-size: 0.9rem;
+}
+
+.demo-row {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 14px;
+  background:
+    linear-gradient(125deg, rgba(6, 16, 34, 0.9), rgba(8, 14, 29, 0.96)),
+    rgba(255, 255, 255, 0.03);
+  padding: 1rem 1rem 1.15rem;
+  box-shadow: inset 0 1px 0 rgba(224, 231, 255, 0.02);
+}
+
+.demo-preview-pane {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.demo-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.demo-panel-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #f8fafc;
+}
+
+.demo-panel-header code {
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  border-radius: 999px;
+  background: rgba(2, 132, 199, 0.14);
+  color: #7dd3fc;
+  padding: 0.18rem 0.6rem;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.demo-panel-header p {
+  margin: 0.3rem 0 0;
+  color: #8ea6ca;
+  font-size: 0.94rem;
+}
+
+.demo-preview {
+  min-height: 140px;
+  display: grid;
+  align-items: center;
+}
+
+.demo-card {
+  margin: 0;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 14px;
+  padding: 1.2rem;
+  min-height: 110px;
+  background: linear-gradient(155deg, rgba(18, 32, 57, 0.95), rgba(9, 17, 34, 0.97));
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.demo-controls-pane {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+}
+
+.demo-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.55rem;
+}
+
+.demo-control {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #c8d6f1;
+}
+
+.demo-control input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(10, 21, 42, 0.95);
+  color: #f8fafc;
+  padding: 0.45rem 0.6rem;
+}
+
+.demo-control input[type='color'] {
+  min-height: 2.2rem;
+  padding: 0.2rem 0.3rem;
+}
+
+.demo-control input:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 1px;
+}
+
+.demo-control-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-control-toggle input {
+  width: auto;
+}
+
+.demo-reset {
+  height: 40px;
+  margin-top: 0.1rem;
+  border: 1px solid rgba(125, 211, 252, 0.35);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(14, 116, 144, 0.35), rgba(8, 47, 73, 0.45));
+  color: #eaf6ff;
+  padding: 0.55rem 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.demo-dev-notes {
+  margin-top: 0.35rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background: rgba(7, 18, 37, 0.82);
+  padding: 0.8rem;
+}
+
+.demo-dev-notes h3 {
+  margin: 0;
+  font-size: 0.94rem;
+  color: #f8fafc;
+}
+
+.demo-dev-notes pre {
+  margin: 0.7rem 0 0;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  background: #020617;
+  color: #dbeafe;
+  padding: 0.7rem;
+}
+
+.demo-dev-notes code {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .demo-row {
+    grid-template-columns: 1fr;
+  }
+}
