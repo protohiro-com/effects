@@ -1,11 +1,42 @@
 export const EFFECT_STYLES = `
 .pe-gradient-border {
   position: relative;
+  isolation: isolate;
   border-radius: var(--pe-gb-radius, inherit);
-  border: var(--pe-gb-thickness, 2px) solid transparent;
-  background:
-    linear-gradient(var(--pe-bg-fill, transparent), var(--pe-bg-fill, transparent)) padding-box,
-    linear-gradient(var(--pe-gb-angle, 120deg), var(--pe-gb-colors, #5eead4, #0ea5e9)) border-box;
+  border-color: transparent;
+}
+
+.pe-gradient-border::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: calc(var(--pe-gb-thickness, 2px) * -1);
+  border-radius: calc(var(--pe-gb-radius, 0px) + var(--pe-gb-thickness, 2px));
+  box-sizing: border-box;
+  padding: var(--pe-gb-thickness, 2px);
+  background: linear-gradient(var(--pe-gb-angle, 120deg), var(--pe-gb-colors, #5eead4, #0ea5e9));
+  pointer-events: none;
+
+  /* Hollow out the center so only the ring remains. */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+@supports not ((-webkit-mask-composite: xor) or (mask-composite: exclude)) {
+  .pe-gradient-border::before {
+    z-index: -1;
+    inset: calc(var(--pe-gb-thickness, 2px) * -1);
+    border-radius: calc(var(--pe-gb-radius, 0px) + var(--pe-gb-thickness, 2px));
+    padding: 0;
+    border: var(--pe-gb-thickness, 2px) solid;
+    border-image: linear-gradient(var(--pe-gb-angle, 120deg), var(--pe-gb-colors, #5eead4, #0ea5e9)) 1;
+  }
 }
 
 .pe-glow {
