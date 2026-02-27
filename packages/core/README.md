@@ -19,5 +19,8 @@ npm install @protohiro/effects-core
 - `toCssTime`
 - `toCssNumber`
 
+Live demo:
+https://libs.protohiro.com/effects/
+
 For full project docs and examples, see:
 https://github.com/protohiro-com/effects

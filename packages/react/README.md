@@ -25,5 +25,8 @@ export function Button() {
 - `useGlowEffect`
 - `useNoiseEffect`
 
+Live demo:
+https://libs.protohiro.com/effects/
+
 For full docs and demos, see:
 https://github.com/protohiro-com/effects
