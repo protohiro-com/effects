@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@protoeffects/react": ["../../packages/react/src/index.ts"]
+      "@protoeffects/react": ["../../packages/react/src/index.ts"],
+      "@protoeffects/core": ["../../packages/core/src/index.ts"]
     }
   },
   "include": ["src", "vite.config.ts"]
