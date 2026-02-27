@@ -1,4 +1,4 @@
-import { useGlowEffect, useGradientBorderEffect, useNoiseEffect } from '@protoeffects/react';
+import { useGlowEffect, useGradientBorderEffect, useNoiseEffect } from '@protohiro/effects';
 import { useMemo, useState, type CSSProperties, type RefCallback } from 'react';
 
 type DemoOption = string | number | boolean;
@@ -136,7 +136,7 @@ function createHookSnippet(story: EffectStory, options: DemoOptions): string {
       ? `{\n${optionLines.join('\n')}\n  }`
       : '{}';
 
-  return `import { ${story.hookName} } from '@protoeffects/react';
+  return `import { ${story.hookName} } from '@protohiro/effects';
 
 export function ${story.componentName}() {
   const ref = ${story.hookName}(${optionsCode});
@@ -262,7 +262,7 @@ export function App() {
         <h2>How to use ProtoEffects</h2>
         <ol>
           <li>
-            Install package: <code>pnpm add @protoeffects/react</code>
+            Install package: <code>pnpm add @protohiro/effects</code>
           </li>
           <li>Use an effect hook inside your component and pass semantic options.</li>
           <li>Attach returned ref to your existing element (no wrapper, no layout hacks).</li>

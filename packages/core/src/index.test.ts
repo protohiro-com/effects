@@ -5,7 +5,7 @@ describe('ensureGlobalStyle', () => {
     ensureGlobalStyle('pe-test', '.pe-test{color:red;}');
     ensureGlobalStyle('pe-test', '.pe-test{color:red;}');
 
-    const nodes = document.head.querySelectorAll('style[data-protoeffects-style="pe-test"]');
+    const nodes = document.head.querySelectorAll('style[data-protohiro-effects-style="pe-test"]');
     expect(nodes).toHaveLength(1);
   });
 });

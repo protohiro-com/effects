@@ -1,11 +1,11 @@
-import { toCssLength, toCssNumber } from '@protoeffects/core';
+import { toCssLength, toCssNumber } from '@protohiro/effects-core';
 import { useMemo } from 'react';
 
 import type { GlowOptions } from '../types';
 import { EFFECT_STYLES } from '../shared/effectStyles';
 import { useCssEffect } from '../shared/useCssEffect';
 
-const STYLE_ID = 'protoeffects-base';
+const STYLE_ID = 'protohiro-effects-base';
 
 export function useGlowEffect<T extends HTMLElement = HTMLElement>(options: GlowOptions = {}) {
   const vars = useMemo(

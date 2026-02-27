@@ -1,5 +1,5 @@
 {
-  "name": "protoeffects-monorepo",
+  "name": "protohiro-effects-monorepo",
   "private": true,
   "version": "0.1.0",
   "description": "Zero-wrapper React CSS effects engine.",
@@ -16,7 +16,7 @@
     "typecheck": "pnpm -r typecheck",
     "version-packages": "changeset version",
     "size": "size-limit",
-    "demo": "pnpm --filter @protoeffects/demo dev"
+    "demo": "pnpm --filter @protohiro/effects-demo dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
@@ -48,7 +48,7 @@
   },
   "size-limit": [
     {
-      "name": "@protoeffects/react",
+      "name": "@protohiro/effects",
       "path": "packages/react/dist/index.js",
       "limit": "4 kB"
     }

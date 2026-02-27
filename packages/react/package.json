@@ -1,5 +1,5 @@
 {
-  "name": "@protoeffects/react",
+  "name": "@protohiro/effects",
   "version": "0.1.0",
   "description": "Zero-wrapper React hooks for composable CSS effects.",
   "license": "MIT",
@@ -30,7 +30,7 @@
   "files": ["dist", "README.md"],
   "sideEffects": false,
   "dependencies": {
-    "@protoeffects/core": "workspace:*"
+    "@protohiro/effects-core": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0",

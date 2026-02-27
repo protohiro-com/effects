@@ -4,9 +4,9 @@ ProtoEffects is a zero-wrapper React library for hard CSS effects like gradient 
 
 ## Packages
 
-- `@protoeffects/core`: shared runtime utilities.
-- `@protoeffects/react`: React hooks and effect styles.
-- `@protoeffects/demo`: local demo app.
+- `@protohiro/effects-core`: shared runtime utilities.
+- `@protohiro/effects`: React hooks and effect styles.
+- `@protohiro/effects-demo`: local demo app.
 
 ## Quick start
 
@@ -16,7 +16,7 @@ pnpm build
 ```
 
 ```tsx
-import { useGradientBorderEffect } from '@protoeffects/react';
+import { useGradientBorderEffect } from '@protohiro/effects';
 
 function Button() {
   const ref = useGradientBorderEffect({ thickness: 2, angle: 90 });

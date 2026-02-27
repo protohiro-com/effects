@@ -1,11 +1,11 @@
-# @protoeffects/core
+# @protohiro/effects-core
 
-Core runtime utilities used by `@protoeffects/react`.
+Core runtime utilities used by `@protohiro/effects`.
 
 ## Install
 
 ```bash
-npm install @protoeffects/core
+npm install @protohiro/effects-core
 ```
 
 ## API

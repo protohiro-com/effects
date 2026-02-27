@@ -1,4 +1,4 @@
-import { applyCssVars, applyEffectClass, ensureGlobalStyle } from '@protoeffects/core';
+import { applyCssVars, applyEffectClass, ensureGlobalStyle } from '@protohiro/effects-core';
 import { useCallback, useEffect, useState } from 'react';
 
 type UseCssEffectInput = {

@@ -89,7 +89,7 @@ importers:
 
   apps/demo:
     dependencies:
-      '@protoeffects/react':
+      '@protohiro/effects':
         specifier: workspace:*
         version: link:../../packages/react
       react:
@@ -103,7 +103,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@protoeffects/core':
+      '@protohiro/effects-core':
         specifier: workspace:*
         version: link:../core
       react:

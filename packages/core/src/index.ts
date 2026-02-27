@@ -6,13 +6,13 @@ export function ensureGlobalStyle(styleId: string, cssText: string): void {
     return;
   }
 
-  const selector = `style[data-protoeffects-style="${styleId}"]`;
+  const selector = `style[data-protohiro-effects-style="${styleId}"]`;
   if (document.head.querySelector(selector)) {
     return;
   }
 
   const node = document.createElement('style');
-  node.setAttribute('data-protoeffects-style', styleId);
+  node.setAttribute('data-protohiro-effects-style', styleId);
   node.textContent = cssText;
   document.head.appendChild(node);
 }

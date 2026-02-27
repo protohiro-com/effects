@@ -1,17 +1,17 @@
-# @protoeffects/react
+# @protohiro/effects
 
 Zero-wrapper React hooks for composable CSS effects.
 
 ## Install
 
 ```bash
-npm install @protoeffects/react
+npm install @protohiro/effects
 ```
 
 ## Quick start
 
 ```tsx
-import { useGradientBorderEffect } from '@protoeffects/react';
+import { useGradientBorderEffect } from '@protohiro/effects';
 
 export function Button() {
   const ref = useGradientBorderEffect({ thickness: 2, angle: 90 });

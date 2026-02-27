@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "@protoeffects/core": ["../core/src/index.ts"]
+      "@protohiro/effects-core": ["../core/src/index.ts"]
     }
   },
   "include": ["src"]
