@@ -247,7 +247,7 @@ export function App() {
   return (
     <main className="demo-page">
       <header className="demo-hero">
-        <h1>ProtoEffects Playground</h1>
+        <h1>Protohiro Effects Playground</h1>
         <p>
           Pick an effect hook, tune its options in real time, then copy the generated snippet into your
           component. This demo shows implementation details, not only visuals.
@@ -259,7 +259,7 @@ export function App() {
         </div>
       </header>
       <section className="demo-usage">
-        <h2>How to use ProtoEffects</h2>
+        <h2>How to use Protohiro Effects</h2>
         <ol>
           <li>
             Install package: <code>pnpm add @protohiro/effects</code>

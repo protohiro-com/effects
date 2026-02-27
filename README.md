@@ -1,6 +1,6 @@
-# ProtoEffects
+# Protohiro Effects
 
-ProtoEffects is a zero-wrapper React library for hard CSS effects like gradient borders, glow rings, and noise overlays.
+Protohiro Effects is a zero-wrapper React library for hard CSS effects like gradient borders, glow rings, and noise overlays.
 
 ## Packages
 
