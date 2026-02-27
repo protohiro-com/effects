@@ -18,10 +18,19 @@
   },
   "keywords": [
     "protoeffects",
+    "protohiro",
     "react",
     "hooks",
     "css",
-    "effects"
+    "effects",
+    "react-hooks",
+    "css-effects",
+    "ui-effects",
+    "gradient-border",
+    "glow",
+    "spotlight",
+    "noise-overlay",
+    "design-system"
   ],
   "publishConfig": {
     "access": "public"
