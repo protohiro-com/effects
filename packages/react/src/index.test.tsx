@@ -3,7 +3,7 @@ import React, { StrictMode, act, useState } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 
-import { useGlowEffect, useGradientBorderEffect, useNoiseEffect } from './index';
+import { useGlowEffect, useGradientBorderEffect, useNoiseEffect, useSpotlightEffect } from './index';
 
 function GradientProbe(props: { thickness?: number }) {
   const ref = useGradientBorderEffect({ thickness: props.thickness ?? 3, colors: '#f00, #00f' });
@@ -13,6 +13,24 @@ function GradientProbe(props: { thickness?: number }) {
 function NoiseProbe() {
   const ref = useNoiseEffect({ intensity: 0.2 });
   return <div ref={ref}>Noise</div>;
+}
+
+function SpotlightProbe(props: {
+  followPointer?: boolean;
+  x?: number;
+  y?: number;
+  mode?: 'glow' | 'reveal';
+  revealColor?: string;
+}) {
+  const ref = useSpotlightEffect({
+    followPointer: props.followPointer,
+    x: props.x ?? 25,
+    y: props.y ?? 40,
+    mode: props.mode,
+    revealColor: props.revealColor,
+    intensity: 0.4,
+  });
+  return <div ref={ref}>Spotlight</div>;
 }
 
 function ComposedProbe() {
@@ -102,5 +120,59 @@ describe('react effect hooks', () => {
     expect(button?.classList.contains('pe-gradient-border')).toBe(true);
     expect(button?.classList.contains('pe-glow')).toBe(true);
     expect(button?.style.color).toBe('red');
+  });
+
+  it('attaches spotlight class and vars', () => {
+    const { container, unmount } = render(<SpotlightProbe x={20} y={60} />);
+    const div = container.querySelector('div');
+
+    expect(div).not.toBeNull();
+    expect(div?.classList.contains('pe-spotlight')).toBe(true);
+    expect(div?.style.getPropertyValue('--pe-spotlight-x')).toBe('20%');
+    expect(div?.style.getPropertyValue('--pe-spotlight-y')).toBe('60%');
+
+    unmount();
+
+    expect(div?.classList.contains('pe-spotlight')).toBe(false);
+    expect(div?.style.getPropertyValue('--pe-spotlight-x')).toBe('');
+    expect(div?.style.getPropertyValue('--pe-spotlight-y')).toBe('');
+  });
+
+  it('updates spotlight position on pointer move and keeps last position on leave', () => {
+    const { container } = render(<SpotlightProbe followPointer x={30} y={45} />);
+    const div = container.querySelector('div');
+
+    expect(div).not.toBeNull();
+    if (!div) {
+      return;
+    }
+
+    const moveEvent = new Event('pointermove', { bubbles: true });
+    Object.defineProperty(moveEvent, 'offsetX', { value: 12 });
+    Object.defineProperty(moveEvent, 'offsetY', { value: 26 });
+    div.dispatchEvent(moveEvent);
+
+    expect(div.style.getPropertyValue('--pe-spotlight-x')).toBe('12px');
+    expect(div.style.getPropertyValue('--pe-spotlight-y')).toBe('26px');
+
+    div.dispatchEvent(new Event('pointerleave', { bubbles: true }));
+
+    expect(div.style.getPropertyValue('--pe-spotlight-x')).toBe('12px');
+    expect(div.style.getPropertyValue('--pe-spotlight-y')).toBe('26px');
+  });
+
+  it('supports reveal mode class and reveal vars', () => {
+    const { container, unmount } = render(<SpotlightProbe mode="reveal" revealColor="#4f46e5" />);
+    const div = container.querySelector('div');
+
+    expect(div).not.toBeNull();
+    expect(div?.classList.contains('pe-spotlight')).toBe(true);
+    expect(div?.classList.contains('pe-spotlight--reveal')).toBe(true);
+    expect(div?.style.getPropertyValue('--pe-spotlight-reveal-color')).toBe('#4f46e5');
+
+    unmount();
+
+    expect(div?.classList.contains('pe-spotlight--reveal')).toBe(false);
+    expect(div?.style.getPropertyValue('--pe-spotlight-reveal-color')).toBe('');
   });
 });

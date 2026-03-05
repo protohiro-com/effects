@@ -1,9 +1,15 @@
-import { useGlowEffect, useGradientBorderEffect, useNoiseEffect } from '@protohiro/effects';
+import {
+  useGlowEffect,
+  useGradientBorderEffect,
+  useNoiseEffect,
+  useSpotlightEffect,
+} from '@protohiro/effects';
 import { useMemo, useState, type CSSProperties, type RefCallback } from 'react';
+import revealImageAsset from './assets/reveal.jpeg';
 
 type DemoOption = string | number | boolean;
 type DemoOptions = Record<string, DemoOption>;
-type ControlType = 'text' | 'number' | 'range' | 'checkbox' | 'color';
+type ControlType = 'text' | 'number' | 'range' | 'checkbox' | 'color' | 'select';
 type PreviewElement = 'button' | 'div' | 'article';
 type EffectHook = (options: DemoOptions) => RefCallback<HTMLElement>;
 
@@ -11,6 +17,7 @@ type DemoControl = {
   key: string;
   label: string;
   type: ControlType;
+  selectOptions?: string[];
   min?: number;
   max?: number;
   step?: number;
@@ -40,6 +47,10 @@ function useGlowStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
 
 function useNoiseStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
   return useNoiseEffect(options);
+}
+
+function useSpotlightStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
+  return useSpotlightEffect(options);
 }
 
 const STORIES: EffectStory[] = [
@@ -116,6 +127,52 @@ const STORIES: EffectStory[] = [
       { key: 'disabled', label: 'Disabled', type: 'checkbox' },
     ],
   },
+  {
+    id: 'spotlight',
+    title: 'Spotlight',
+    description: 'Interactive light cone with cinematic falloff and pointer tracking.',
+    hookName: 'useSpotlightEffect',
+    componentName: 'SpotlightCard',
+    previewText: 'Move pointer across the card',
+    previewElement: 'article',
+    previewStyle: {
+      background:
+        'radial-gradient(circle at 8% 12%, rgba(99, 102, 241, 0.26), transparent 34%), radial-gradient(circle at 90% 82%, rgba(45, 212, 191, 0.12), transparent 42%), linear-gradient(150deg, #090617 0%, #0a1023 48%, #070b1a 100%)',
+      color: '#f5f3ff',
+      border: '1px solid rgba(129, 140, 248, 0.32)',
+      boxShadow:
+        'inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -24px 45px rgba(12, 8, 35, 0.42), 0 24px 70px rgba(3, 6, 19, 0.58)',
+    },
+    hook: useSpotlightStoryHook,
+    defaults: {
+      mode: 'reveal',
+      color: '#2a2079',
+      size: 50,
+      intensity: 0.3,
+      softness: 0.9,
+      coreIntensity: 0.35,
+      x: 36,
+      y: 32,
+      followPointer: true,
+      revealColor: '#38bdf8',
+      revealImage: revealImageAsset,
+      revealOpacity: 0.9,
+    },
+    controls: [
+      { key: 'mode', label: 'Mode', type: 'select', selectOptions: ['reveal', 'glow'] },
+      { key: 'color', label: 'Color', type: 'color' },
+      { key: 'size', label: 'Size', type: 'number', min: 0, max: 280, step: 1 },
+      { key: 'intensity', label: 'Intensity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'softness', label: 'Softness', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'coreIntensity', label: 'Core intensity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'revealColor', label: 'Reveal color', type: 'color' },
+      { key: 'revealOpacity', label: 'Reveal opacity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'x', label: 'X', type: 'range', min: 0, max: 100, step: 1 },
+      { key: 'y', label: 'Y', type: 'range', min: 0, max: 100, step: 1 },
+      { key: 'followPointer', label: 'Follow pointer', type: 'checkbox' },
+      { key: 'disabled', label: 'Disabled', type: 'checkbox' },
+    ],
+  },
 ];
 
 function formatOptionValue(value: DemoOption): string {
@@ -150,6 +207,7 @@ function EffectPlayground({ story }: { story: EffectStory }) {
   const useEffectHook = story.hook;
   const ref = useEffectHook(options);
   const PreviewTag = story.previewElement;
+  const previewClassName = story.id === 'spotlight' ? 'demo-card demo-card-spotlight' : 'demo-card';
   const hookSnippet = useMemo(() => createHookSnippet(story, options), [options, story]);
 
   const controls = useMemo(
@@ -173,6 +231,30 @@ function EffectPlayground({ story }: { story: EffectStory }) {
                   }));
                 }}
               />
+            </label>
+          );
+        }
+
+        if (control.type === 'select') {
+          return (
+            <label key={control.key} className="demo-control" htmlFor={inputId}>
+              <span>{control.label}</span>
+              <select
+                id={inputId}
+                value={String(value ?? '')}
+                onChange={(event) => {
+                  setOptions((current) => ({
+                    ...current,
+                    [control.key]: event.target.value,
+                  }));
+                }}
+              >
+                {(control.selectOptions ?? []).map((optionValue) => (
+                  <option key={optionValue} value={optionValue}>
+                    {optionValue}
+                  </option>
+                ))}
+              </select>
             </label>
           );
         }
@@ -216,7 +298,7 @@ function EffectPlayground({ story }: { story: EffectStory }) {
           <p>{story.description}</p>
         </header>
         <div className="demo-preview">
-          <PreviewTag ref={ref} className="demo-card" style={story.previewStyle}>
+          <PreviewTag ref={ref} className={previewClassName} style={story.previewStyle}>
             {story.previewText}
           </PreviewTag>
         </div>

@@ -21,3 +21,19 @@ export interface NoiseOptions extends EffectBaseOptions {
   size?: string | number;
   intensity?: number;
 }
+
+export interface SpotlightOptions extends EffectBaseOptions {
+  mode?: 'glow' | 'reveal';
+  size?: string | number;
+  intensity?: number;
+  color?: string;
+  softness?: number;
+  coreIntensity?: number;
+  x?: string | number;
+  y?: string | number;
+  followPointer?: boolean;
+  revealColor?: string;
+  revealImage?: string;
+  revealSize?: string | number;
+  revealOpacity?: number;
+}

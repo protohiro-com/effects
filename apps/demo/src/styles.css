@@ -147,6 +147,18 @@ h1 {
   font-weight: 600;
 }
 
+.demo-card-spotlight {
+  min-height: 136px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.05rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  text-shadow: 0 3px 16px rgba(3, 6, 23, 0.85);
+}
+
 .demo-controls-pane {
   display: grid;
   align-content: start;
@@ -176,12 +188,26 @@ h1 {
   padding: 0.45rem 0.6rem;
 }
 
+.demo-control select {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(10, 21, 42, 0.95);
+  color: #f8fafc;
+  padding: 0.45rem 0.6rem;
+}
+
 .demo-control input[type='color'] {
   min-height: 2.2rem;
   padding: 0.2rem 0.3rem;
 }
 
 .demo-control input:focus-visible {
+  outline: 2px solid rgba(56, 189, 248, 0.6);
+  outline-offset: 1px;
+}
+
+.demo-control select:focus-visible {
   outline: 2px solid rgba(56, 189, 248, 0.6);
   outline-offset: 1px;
 }

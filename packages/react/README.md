@@ -24,6 +24,7 @@ export function Button() {
 - `useGradientBorderEffect`
 - `useGlowEffect`
 - `useNoiseEffect`
+- `useSpotlightEffect`
 
 Live demo:
 https://libs.protohiro.com/effects/
