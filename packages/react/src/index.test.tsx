@@ -3,7 +3,13 @@ import React, { StrictMode, act, useState } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 
-import { useGlowEffect, useGradientBorderEffect, useNoiseEffect, useSpotlightEffect } from './index';
+import {
+  useGlassHighlightEffect,
+  useGlowEffect,
+  useGradientBorderEffect,
+  useNoiseEffect,
+  useSpotlightEffect,
+} from './index';
 
 function GradientProbe(props: { thickness?: number }) {
   const ref = useGradientBorderEffect({ thickness: props.thickness ?? 3, colors: '#f00, #00f' });
@@ -13,6 +19,15 @@ function GradientProbe(props: { thickness?: number }) {
 function NoiseProbe() {
   const ref = useNoiseEffect({ intensity: 0.2 });
   return <div ref={ref}>Noise</div>;
+}
+
+function GlassProbe(props: { sheenOpacity?: number; blur?: number; color?: string }) {
+  const ref = useGlassHighlightEffect({
+    sheenOpacity: props.sheenOpacity ?? 0.24,
+    blur: props.blur ?? 12,
+    color: props.color ?? '#7dd3fc',
+  });
+  return <div ref={ref}>Glass</div>;
 }
 
 function SpotlightProbe(props: {
@@ -85,6 +100,46 @@ describe('react effect hooks', () => {
     expect(div?.style.getPropertyValue('--pe-glow-opacity')).toBe('0.2');
     fireEvent.click(getByRole('button'));
     expect(div?.style.getPropertyValue('--pe-glow-opacity')).toBe('0.8');
+  });
+
+  it('attaches and detaches glass highlight class and vars', () => {
+    const { container, unmount } = render(<GlassProbe sheenOpacity={0.34} blur={16} color="#c084fc" />);
+    const div = container.querySelector('div');
+
+    expect(div).not.toBeNull();
+    expect(div?.classList.contains('pe-glass-highlight')).toBe(true);
+    expect(div?.style.getPropertyValue('--pe-gh-sheen-opacity')).toBe('0.34');
+    expect(div?.style.getPropertyValue('--pe-gh-blur')).toBe('16px');
+    expect(div?.style.getPropertyValue('--pe-gh-color')).toBe('#c084fc');
+
+    unmount();
+
+    expect(div?.classList.contains('pe-glass-highlight')).toBe(false);
+    expect(div?.style.getPropertyValue('--pe-gh-sheen-opacity')).toBe('');
+    expect(div?.style.getPropertyValue('--pe-gh-blur')).toBe('');
+    expect(div?.style.getPropertyValue('--pe-gh-color')).toBe('');
+  });
+
+  it('updates glass highlight vars on options change', () => {
+    function Probe() {
+      const [edgeOpacity, setEdgeOpacity] = useState(0.16);
+      const ref = useGlassHighlightEffect({ edgeOpacity, angle: 24 });
+
+      return (
+        <>
+          <div ref={ref}>Glass</div>
+          <button onClick={() => setEdgeOpacity(0.44)}>Update</button>
+        </>
+      );
+    }
+
+    const { container, getByRole } = render(<Probe />);
+    const div = container.querySelector('div');
+
+    expect(div?.style.getPropertyValue('--pe-gh-edge-opacity')).toBe('0.16');
+    expect(div?.style.getPropertyValue('--pe-gh-angle')).toBe('24deg');
+    fireEvent.click(getByRole('button'));
+    expect(div?.style.getPropertyValue('--pe-gh-edge-opacity')).toBe('0.44');
   });
 
   it('works without strict mode console errors', () => {

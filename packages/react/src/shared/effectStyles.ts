@@ -47,6 +47,94 @@ export const EFFECT_STYLES = `
       color-mix(in srgb, var(--pe-glow-color, #38bdf8) calc(var(--pe-glow-opacity, 0.2) * 100%), transparent);
 }
 
+.pe-glass-highlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.pe-glass-highlight::after {
+  content: '';
+  position: absolute;
+  inset: var(--pe-gh-inset, 0);
+  border-radius: var(--pe-gh-radius, inherit);
+  pointer-events: none;
+  background:
+    radial-gradient(
+      118% 74% at 46% 100%,
+      color-mix(in srgb, var(--pe-gh-color, #8be9fd) calc(var(--pe-gh-tint-opacity, 0.14) * 18%), transparent) 0%,
+      transparent 62%
+    ),
+    linear-gradient(
+      var(--pe-gh-angle, 136deg),
+      transparent 22%,
+      rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.02)) 37%,
+      rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.22)) 44%,
+      rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.86)) 48.5%,
+      rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.18)) 53.5%,
+      transparent 61%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.98)) 0%,
+      rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.66)) 7%,
+      rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.18)) 16%,
+      transparent 34%
+    ),
+    radial-gradient(
+      90% 58% at 14% 0%,
+      rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.88)) 0%,
+      transparent 46%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--pe-gh-color, #8be9fd) calc(var(--pe-gh-tint-opacity, 0.14) * 44%), transparent) 0%,
+      color-mix(in srgb, var(--pe-gh-color, #8be9fd) calc(var(--pe-gh-tint-opacity, 0.14) * 20%), transparent) 42%,
+      transparent 78%
+    );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / var(--pe-gh-edge-opacity, 0.3)),
+    inset 0 0 0 1px rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.28)),
+    inset 0 12px 22px rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.08)),
+    inset 0 -18px 28px color-mix(
+      in srgb,
+      var(--pe-gh-color, #8be9fd) calc(var(--pe-gh-tint-opacity, 0.14) * 8%),
+      transparent
+    );
+  filter: blur(var(--pe-gh-blur, 0px));
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .pe-glass-highlight::after {
+    -webkit-backdrop-filter: blur(var(--pe-gh-blur, 0px)) saturate(calc(var(--pe-gh-saturate, 1.16) * 100%));
+    backdrop-filter: blur(var(--pe-gh-blur, 0px)) saturate(calc(var(--pe-gh-saturate, 1.16) * 100%));
+  }
+}
+
+@supports not (color: color-mix(in srgb, white, black)) {
+  .pe-glass-highlight::after {
+    background:
+      linear-gradient(
+        var(--pe-gh-angle, 136deg),
+        transparent 22%,
+        rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.18)) 44%,
+        rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.82)) 48.5%,
+        rgb(255 255 255 / calc(var(--pe-gh-sheen-opacity, 0.24) * 0.14)) 53.5%,
+        transparent 61%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(255 255 255 / var(--pe-gh-edge-opacity, 0.3)) 0%,
+        rgb(255 255 255 / calc(var(--pe-gh-edge-opacity, 0.3) * 0.54)) 10%,
+        transparent 34%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(255 255 255 / calc(var(--pe-gh-tint-opacity, 0.14) * 0.18)) 0%,
+        transparent 78%
+      );
+  }
+}
+
 .pe-noise {
   position: relative;
 }

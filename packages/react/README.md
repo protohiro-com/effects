@@ -22,9 +22,24 @@ export function Button() {
 ## Hooks
 
 - `useGradientBorderEffect`
+- `useGlassHighlightEffect`
 - `useGlowEffect`
 - `useNoiseEffect`
 - `useSpotlightEffect`
+
+### `useGlassHighlightEffect(options)`
+
+Options:
+- `color?: string`
+- `edgeOpacity?: number`
+- `sheenOpacity?: number`
+- `tintOpacity?: number`
+- `angle?: string | number`
+- `blur?: string | number`
+- `radius?: string | number`
+- `inset?: string | number`
+- `saturate?: number`
+- `disabled?: boolean`
 
 Live demo:
 https://libs.protohiro.com/effects/

@@ -50,7 +50,7 @@
     {
       "name": "@protohiro/effects",
       "path": "packages/react/dist/index.js",
-      "limit": "5.5 kB"
+      "limit": "5.6 kB"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Protohiro Effects
 
-Protohiro Effects is a zero-wrapper React library for hard CSS effects like gradient borders, glow rings, noise overlays, and spotlight overlays.
+Protohiro Effects is a zero-wrapper React library for hard CSS effects like gradient borders, glass highlights, glow rings, noise overlays, and spotlight overlays.
 
 ## Live demo
 
@@ -38,6 +38,20 @@ Options:
 - `radius?: string | number`
 - `colors?: string`
 - `angle?: string | number`
+- `disabled?: boolean`
+
+### `useGlassHighlightEffect(options)`
+
+Options:
+- `color?: string`
+- `edgeOpacity?: number`
+- `sheenOpacity?: number`
+- `tintOpacity?: number`
+- `angle?: string | number`
+- `blur?: string | number`
+- `radius?: string | number`
+- `inset?: string | number`
+- `saturate?: number`
 - `disabled?: boolean`
 
 ### `useGlowEffect(options)`

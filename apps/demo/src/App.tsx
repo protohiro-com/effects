@@ -1,4 +1,5 @@
 import {
+  useGlassHighlightEffect,
   useGlowEffect,
   useGradientBorderEffect,
   useNoiseEffect,
@@ -43,6 +44,10 @@ function useGradientStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
 
 function useGlowStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
   return useGlowEffect(options);
+}
+
+function useGlassHighlightStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
+  return useGlassHighlightEffect(options);
 }
 
 function useNoiseStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
@@ -101,6 +106,45 @@ const STORIES: EffectStory[] = [
       { key: 'blur', label: 'Blur', type: 'number', min: 0, max: 80, step: 1 },
       { key: 'spread', label: 'Spread', type: 'number', min: 0, max: 24, step: 1 },
       { key: 'opacity', label: 'Opacity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'disabled', label: 'Disabled', type: 'checkbox' },
+    ],
+  },
+  {
+    id: 'glass-highlight',
+    title: 'Glass Highlight',
+    description: 'Glassy edge light and sheen overlay for premium surfaces.',
+    hookName: 'useGlassHighlightEffect',
+    componentName: 'GlassHighlightCard',
+    previewText: 'Glass Highlight Surface',
+    previewElement: 'article',
+    previewStyle: {
+      background:
+        'linear-gradient(145deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.92) 52%, rgba(15, 23, 42, 0.98) 100%)',
+      color: '#e2e8f0',
+      border: '1px solid rgba(148, 163, 184, 0.22)',
+      boxShadow:
+        '0 18px 48px rgba(15, 23, 42, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
+    } as CSSProperties,
+    hook: useGlassHighlightStoryHook,
+    defaults: {
+      color: '#a855f7',
+      edgeOpacity: 0.3,
+      sheenOpacity: 0.44,
+      tintOpacity: 0.56,
+      angle: '132deg',
+      blur: 0,
+      inset: 0,
+      saturate: 1.85,
+    },
+    controls: [
+      { key: 'color', label: 'Color', type: 'color' },
+      { key: 'edgeOpacity', label: 'Edge opacity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'sheenOpacity', label: 'Sheen opacity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'tintOpacity', label: 'Tint opacity', type: 'range', min: 0, max: 1, step: 0.01 },
+      { key: 'angle', label: 'Angle', type: 'text' },
+      { key: 'blur', label: 'Blur', type: 'number', min: 0, max: 40, step: 1 },
+      { key: 'inset', label: 'Inset', type: 'number', min: -8, max: 24, step: 1 },
+      { key: 'saturate', label: 'Saturate', type: 'range', min: 0, max: 2, step: 0.01 },
       { key: 'disabled', label: 'Disabled', type: 'checkbox' },
     ],
   },
@@ -299,7 +343,7 @@ function EffectPlayground({ story }: { story: EffectStory }) {
         </header>
         <div className="demo-preview">
           <PreviewTag ref={ref} className={previewClassName} style={story.previewStyle}>
-            {story.previewText}
+            <span className="demo-card-content">{story.previewText}</span>
           </PreviewTag>
         </div>
       </div>

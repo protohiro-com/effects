@@ -17,6 +17,18 @@ export interface GlowOptions extends EffectBaseOptions {
   opacity?: number;
 }
 
+export interface GlassHighlightOptions extends EffectBaseOptions {
+  color?: string;
+  edgeOpacity?: number;
+  sheenOpacity?: number;
+  tintOpacity?: number;
+  angle?: string | number;
+  blur?: string | number;
+  radius?: string | number;
+  inset?: string | number;
+  saturate?: number;
+}
+
 export interface NoiseOptions extends EffectBaseOptions {
   size?: string | number;
   intensity?: number;
