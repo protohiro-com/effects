@@ -119,22 +119,22 @@ const STORIES: EffectStory[] = [
     previewElement: 'article',
     previewStyle: {
       background:
-        'linear-gradient(145deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.92) 52%, rgba(15, 23, 42, 0.98) 100%)',
-      color: '#e2e8f0',
-      border: '1px solid rgba(148, 163, 184, 0.22)',
+        'radial-gradient(circle at 86% 14%, rgba(196, 181, 253, 0.16), transparent 24%), linear-gradient(155deg, rgba(17, 24, 39, 0.98) 0%, rgba(26, 34, 69, 0.94) 42%, rgba(15, 23, 42, 0.98) 100%)',
+      color: '#eef2ff',
+      border: '1px solid rgba(167, 139, 250, 0.28)',
       boxShadow:
-        '0 18px 48px rgba(15, 23, 42, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.04)',
+        '0 18px 48px rgba(8, 15, 31, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
     } as CSSProperties,
     hook: useGlassHighlightStoryHook,
     defaults: {
-      color: '#a855f7',
-      edgeOpacity: 0.3,
-      sheenOpacity: 0.44,
-      tintOpacity: 0.56,
-      angle: '132deg',
+      color: '#c084fc',
+      edgeOpacity: 0.26,
+      sheenOpacity: 0.28,
+      tintOpacity: 0.24,
+      angle: '118deg',
       blur: 0,
       inset: 0,
-      saturate: 1.85,
+      saturate: 1.22,
     },
     controls: [
       { key: 'color', label: 'Color', type: 'color' },
