@@ -29,6 +29,8 @@ export function Button() {
 
 ### `useGlassHighlightEffect(options)`
 
+Adds a restrained glass highlight layer with edge light, soft sheen, tint, and optional backdrop blur for dark premium surfaces.
+
 Options:
 - `color?: string`
 - `edgeOpacity?: number`

@@ -1,5 +1,16 @@
 # @protohiro/effects
 
+## 0.3.1
+
+### Patch Changes
+
+- Refine `useGlassHighlightEffect` rendering to produce a more restrained premium-glass finish.
+
+  Highlights:
+  - Softens the glass sheen profile to avoid harsh central streaks and plastic-looking glare.
+  - Rebalances edge light, tint layering, and fallback gradients for a calmer dark-glass presentation.
+  - Keeps the hook contract and CSS variable API unchanged while improving the shipped visual baseline.
+
 ## 0.3.0
 
 ### Minor Changes

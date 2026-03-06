@@ -42,6 +42,8 @@ Options:
 
 ### `useGlassHighlightEffect(options)`
 
+Adds a restrained glass highlight layer tuned for premium dark surfaces.
+
 Options:
 - `color?: string`
 - `edgeOpacity?: number`
