@@ -2,6 +2,8 @@
 
 Core runtime utilities used by `@protohiro/effects`.
 
+This package exists for the single-element runtime layer: style injection, class mutation, CSS variable mutation, and ref composition helpers for zero-wrapper effects.
+
 ## Install
 
 ```bash
@@ -20,7 +22,7 @@ npm install @protohiro/effects-core
 - `toCssNumber`
 
 Live demo:
-https://libs.protohiro.com/effects/
+[libs.protohiro.com/effects](https://libs.protohiro.com/effects/)
 
 For full project docs and examples, see:
-https://github.com/protohiro-com/effects
+[github.com/protohiro-com/effects](https://github.com/protohiro-com/effects)

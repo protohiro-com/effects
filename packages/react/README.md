@@ -1,6 +1,15 @@
 # @protohiro/effects
 
-Zero-wrapper React hooks for composable CSS effects.
+React hooks for hard CSS effects on existing elements without wrappers.
+
+Best for:
+
+- `react gradient border`
+- `react spotlight reveal effect`
+- `react glass highlight`
+- composable effects in design systems
+
+The library targets effects that are awkward to ship by hand because of pseudo-elements, `border-radius`, Safari fallback behavior, SSR, and ref composition.
 
 ## Install
 
@@ -19,6 +28,14 @@ export function Button() {
 }
 ```
 
+## Why use it
+
+- no extra DOM nodes
+- no layout measurements
+- SSR and hydration friendly
+- preserves existing refs and class names
+- effects compose through namespaced classes and CSS variables
+
 ## Hooks
 
 - `useGradientBorderEffect`
@@ -26,6 +43,16 @@ export function Button() {
 - `useGlowEffect`
 - `useNoiseEffect`
 - `useSpotlightEffect`
+
+## Core effects
+
+### `useGradientBorderEffect(options)`
+
+Gradient border ring on a single existing element with `border-radius` support and graceful fallback behavior.
+
+### `useSpotlightEffect(options)`
+
+Interactive spotlight and reveal overlay for cards, media surfaces, and CTA blocks.
 
 ### `useGlassHighlightEffect(options)`
 
@@ -44,7 +71,7 @@ Options:
 - `disabled?: boolean`
 
 Live demo:
-https://libs.protohiro.com/effects/
+[libs.protohiro.com/effects](https://libs.protohiro.com/effects/)
 
 For full docs and demos, see:
-https://github.com/protohiro-com/effects
+[github.com/protohiro-com/effects](https://github.com/protohiro-com/effects)
