@@ -470,10 +470,10 @@ export function App() {
   return (
     <main className="demo-page">
       <header className="demo-hero">
-        <span className="demo-eyebrow">ProtoEffects for React</span>
+        <span className="demo-eyebrow">Protohiro Effects for React</span>
         <h1>Hard CSS effects without wrappers, layout hacks, or runtime measurements.</h1>
         <p>
-          ProtoEffects packages the annoying parts of shipping premium UI effects on existing elements:
+          Protohiro Effects packages the annoying parts of shipping premium UI effects on existing elements:
           clipping, pseudo-element behavior, ref composition, CSS variables, and fallbacks.
         </p>
         <div className="demo-badges" aria-label="developer highlights">

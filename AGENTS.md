@@ -1,8 +1,8 @@
-# ProtoEffects – AGENTS.md
+# Protohiro Effects – AGENTS.md
 
 ## Mission
 
-ProtoEffects builds a React library for hard CSS effects (for example: `gradient-border`, glow ring, noise overlays, sheen, spotlight) without wrappers and without layout hacks.
+Protohiro Effects builds a React library for hard CSS effects (for example: `gradient-border`, glow ring, noise overlays, sheen, spotlight) without wrappers and without layout hacks.
 
 Core rules:
 - no extra DOM nodes
