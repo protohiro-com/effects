@@ -202,9 +202,21 @@ describe('react effect hooks', () => {
       return;
     }
 
+    vi.spyOn(div, 'getBoundingClientRect').mockReturnValue({
+      x: 10,
+      y: 20,
+      left: 10,
+      top: 20,
+      right: 210,
+      bottom: 140,
+      width: 200,
+      height: 120,
+      toJSON: () => ({}),
+    });
+
     const moveEvent = new Event('pointermove', { bubbles: true });
-    Object.defineProperty(moveEvent, 'offsetX', { value: 12 });
-    Object.defineProperty(moveEvent, 'offsetY', { value: 26 });
+    Object.defineProperty(moveEvent, 'clientX', { value: 22 });
+    Object.defineProperty(moveEvent, 'clientY', { value: 46 });
     div.dispatchEvent(moveEvent);
 
     expect(div.style.getPropertyValue('--pe-spotlight-x')).toBe('12px');
@@ -214,6 +226,48 @@ describe('react effect hooks', () => {
 
     expect(div.style.getPropertyValue('--pe-spotlight-x')).toBe('12px');
     expect(div.style.getPropertyValue('--pe-spotlight-y')).toBe('26px');
+  });
+
+  it('tracks spotlight pointer position relative to the host element even over child content', () => {
+    function NestedSpotlightProbe() {
+      const ref = useSpotlightEffect({ followPointer: true, x: 20, y: 20 });
+
+      return (
+        <div ref={ref}>
+          <span>Child</span>
+        </div>
+      );
+    }
+
+    const { container } = render(<NestedSpotlightProbe />);
+    const host = container.querySelector('div');
+    const child = container.querySelector('span');
+
+    expect(host).not.toBeNull();
+    expect(child).not.toBeNull();
+    if (!host || !child) {
+      return;
+    }
+
+    vi.spyOn(host, 'getBoundingClientRect').mockReturnValue({
+      x: 50,
+      y: 80,
+      left: 50,
+      top: 80,
+      right: 350,
+      bottom: 260,
+      width: 300,
+      height: 180,
+      toJSON: () => ({}),
+    });
+
+    const moveEvent = new Event('pointermove', { bubbles: true });
+    Object.defineProperty(moveEvent, 'clientX', { value: 110 });
+    Object.defineProperty(moveEvent, 'clientY', { value: 150 });
+    child.dispatchEvent(moveEvent);
+
+    expect(host.style.getPropertyValue('--pe-spotlight-x')).toBe('60px');
+    expect(host.style.getPropertyValue('--pe-spotlight-y')).toBe('70px');
   });
 
   it('supports reveal mode class and reveal vars', () => {

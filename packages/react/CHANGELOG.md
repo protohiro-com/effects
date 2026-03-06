@@ -1,5 +1,11 @@
 # @protohiro/effects
 
+## 0.3.2
+
+### Patch Changes
+
+- Fix spotlight pointer tracking so the reveal position stays stable when the pointer moves across child content, and refresh demo/discovery messaging around the library's core hard effects.
+
 ## 0.3.1
 
 ### Patch Changes

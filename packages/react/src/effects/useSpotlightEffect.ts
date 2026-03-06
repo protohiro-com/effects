@@ -60,6 +60,10 @@ function normalizeSpotlightSize(
   return Math.max(0, value);
 }
 
+function clampPointerOffset(value: number, max: number): number {
+  return Math.max(0, Math.min(value, max));
+}
+
 export function useSpotlightEffect<T extends HTMLElement = HTMLElement>(
   options: SpotlightOptions = {},
 ) {
@@ -135,8 +139,14 @@ export function useSpotlightEffect<T extends HTMLElement = HTMLElement>(
     }
 
     const onPointerMove = (event: PointerEvent) => {
-      node.style.setProperty('--pe-spotlight-x', `${event.offsetX}px`);
-      node.style.setProperty('--pe-spotlight-y', `${event.offsetY}px`);
+      // Pointer-follow spotlight needs host-relative coordinates; this is the minimal geometry read for that mode.
+      // eslint-disable-next-line no-restricted-syntax
+      const rect = node.getBoundingClientRect();
+      const nextX = clampPointerOffset(event.clientX - rect.left, rect.width);
+      const nextY = clampPointerOffset(event.clientY - rect.top, rect.height);
+
+      node.style.setProperty('--pe-spotlight-x', `${nextX}px`);
+      node.style.setProperty('--pe-spotlight-y', `${nextY}px`);
     };
 
     node.addEventListener('pointermove', onPointerMove);

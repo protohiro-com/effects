@@ -1,5 +1,12 @@
 # @protohiro/effects-demo
 
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @protohiro/effects@0.3.2
+
 ## 0.1.4
 
 ### Patch Changes

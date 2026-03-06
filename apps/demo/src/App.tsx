@@ -38,6 +38,15 @@ type EffectStory = {
   controls: DemoControl[];
 };
 
+type FeaturedEffect = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  blurb: string;
+  hookName: string;
+  preview: () => JSX.Element;
+};
+
 function useGradientStoryHook(options: DemoOptions): RefCallback<HTMLElement> {
   return useGradientBorderEffect(options);
 }
@@ -246,6 +255,94 @@ export function ${story.componentName}() {
 }`;
 }
 
+function FeaturedGradientBorderCard() {
+  const ref = useGradientBorderEffect({
+    thickness: 3,
+    radius: 18,
+    angle: 132,
+    colors: '#f59e0b, #22d3ee, #a78bfa',
+  });
+
+  return (
+    <button ref={ref} className="featured-card featured-card-gradient">
+      <span className="featured-card-kicker">No wrapper</span>
+      <strong>Gradient border CTA</strong>
+      <span>Correct clipping and border radius on the existing button element.</span>
+    </button>
+  );
+}
+
+function FeaturedGlassHighlightCard() {
+  const ref = useGlassHighlightEffect({
+    color: '#7dd3fc',
+    edgeOpacity: 0.2,
+    sheenOpacity: 0.72,
+    tintOpacity: 0.55,
+    blur: 5,
+    inset: 1,
+    saturate: 1.05,
+  });
+
+  return (
+    <article ref={ref} className="featured-card featured-card-glass">
+      <span className="featured-card-kicker">Premium surface</span>
+      <strong>Glass highlight card</strong>
+      <span>Subtle edge light, sheen, and tint without fighting your component structure.</span>
+    </article>
+  );
+}
+
+function FeaturedSpotlightCard() {
+  const ref = useSpotlightEffect({
+    mode: 'reveal',
+    followPointer: true,
+    size: 40,
+    intensity: 0.34,
+    softness: 0.92,
+    coreIntensity: 0.38,
+    revealColor: '#38bdf8',
+    revealImage: revealImageAsset,
+    revealOpacity: 0.92,
+    x: 24,
+    y: 72,
+  });
+
+  return (
+    <article ref={ref} className="featured-card featured-card-spotlight">
+      <span className="featured-card-kicker">Interactive reveal</span>
+      <strong>Spotlight media card</strong>
+      <span>Move the pointer to reveal detail without extra layers or layout hacks.</span>
+    </article>
+  );
+}
+
+const FEATURED_EFFECTS: FeaturedEffect[] = [
+  {
+    id: 'gradient-border',
+    eyebrow: 'Hard effect',
+    title: 'Gradient border on a single element',
+    blurb: 'The common “looks easy in CSS” effect that turns messy once radius, fallbacks, and composition matter.',
+    hookName: 'useGradientBorderEffect',
+    preview: FeaturedGradientBorderCard,
+  },
+  {
+    id: 'glass-highlight',
+    eyebrow: 'Premium UI',
+    title: 'Glass highlight for dark surfaces',
+    blurb: 'Built for cards and panels that need sheen and edge light without washing out content.',
+    hookName: 'useGlassHighlightEffect',
+    preview: FeaturedGlassHighlightCard,
+  },
+  {
+    id: 'spotlight',
+    eyebrow: 'Hero effect',
+    title: 'Spotlight reveal for cards and CTAs',
+    blurb: 'The strongest showcase effect in the library: interactive, visual, and painful to hand-roll cleanly.',
+    hookName: 'useSpotlightEffect',
+    preview: FeaturedSpotlightCard,
+  },
+];
+
 function EffectPlayground({ story }: { story: EffectStory }) {
   const [options, setOptions] = useState<DemoOptions>(story.defaults);
   const useEffectHook = story.hook;
@@ -373,25 +470,46 @@ export function App() {
   return (
     <main className="demo-page">
       <header className="demo-hero">
-        <h1>Protohiro Effects Playground</h1>
+        <span className="demo-eyebrow">ProtoEffects for React</span>
+        <h1>Hard CSS effects without wrappers, layout hacks, or runtime measurements.</h1>
         <p>
-          Pick an effect hook, tune its options in real time, then copy the generated snippet into your
-          component. This demo shows implementation details, not only visuals.
+          ProtoEffects packages the annoying parts of shipping premium UI effects on existing elements:
+          clipping, pseudo-element behavior, ref composition, CSS variables, and fallbacks.
         </p>
         <div className="demo-badges" aria-label="developer highlights">
           <span className="demo-badge">No extra DOM nodes</span>
           <span className="demo-badge">Ref-based hooks</span>
           <span className="demo-badge">CSS variables only</span>
+          <span className="demo-badge">SSR-safe hooks</span>
         </div>
       </header>
+      <section className="featured-grid" aria-label="featured hard effects">
+        {FEATURED_EFFECTS.map((effect) => {
+          const Preview = effect.preview;
+
+          return (
+            <article key={effect.id} className="featured-panel">
+              <div className="featured-copy">
+                <span className="featured-eyebrow">{effect.eyebrow}</span>
+                <h2>{effect.title}</h2>
+                <p>{effect.blurb}</p>
+                <code>{effect.hookName}</code>
+              </div>
+              <div className="featured-preview">
+                <Preview />
+              </div>
+            </article>
+          );
+        })}
+      </section>
       <section className="demo-usage">
-        <h2>How to use Protohiro Effects</h2>
+        <h2>Inspect and tune the hooks</h2>
         <ol>
           <li>
             Install package: <code>pnpm add @protohiro/effects</code>
           </li>
           <li>Use an effect hook inside your component and pass semantic options.</li>
-          <li>Attach returned ref to your existing element (no wrapper, no layout hacks).</li>
+          <li>Attach the returned ref to your existing element, then tune the effect below in real time.</li>
         </ol>
       </section>
 
