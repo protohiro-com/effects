@@ -18,6 +18,7 @@ npm install @protohiro/effects
 ```
 
 Peer dependencies:
+
 - `react: ^18 || ^19`
 - `react-dom: ^18 || ^19`
 
@@ -31,6 +32,10 @@ export function Button() {
   return <button ref={ref}>Click</button>;
 }
 ```
+
+## Demo
+
+[protohiro.com/labs/effects](https://protohiro.com/labs/effects)
 
 ## Why use it
 
@@ -63,6 +68,7 @@ Interactive spotlight and reveal overlay for cards, media surfaces, and CTA bloc
 Adds a restrained glass highlight layer with edge light, soft sheen, tint, and optional backdrop blur for dark premium surfaces.
 
 Options:
+
 - `color?: string`
 - `edgeOpacity?: number`
 - `sheenOpacity?: number`
@@ -75,7 +81,7 @@ Options:
 - `disabled?: boolean`
 
 Live demo:
-[libs.protohiro.com/effects](https://libs.protohiro.com/effects/)
+[protohiro.com/labs/effects](https://protohiro.com/labs/effects)
 
 For full docs and demos, see:
 [github.com/protohiro-com/effects](https://github.com/protohiro-com/effects)

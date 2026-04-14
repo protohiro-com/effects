@@ -12,9 +12,12 @@
     "url": "git+https://github.com/protohiro-com/effects.git",
     "directory": "packages/react"
   },
-  "homepage": "https://github.com/protohiro-com/effects#readme",
+  "homepage": "https://protohiro.com/labs/effects",
   "bugs": {
     "url": "https://github.com/protohiro-com/effects/issues"
+  },
+  "funding": {
+    "url": "https://protohiro.com/labs/effects"
   },
   "keywords": [
     "protohiro-effects",

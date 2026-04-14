@@ -4,6 +4,8 @@ Protohiro Effects is a zero-wrapper React library for hard CSS effects on existi
 
 Built for design systems and app UIs that need premium effects without extra DOM nodes, layout shifts, or runtime layout measurements.
 
+Demo: [protohiro.com/labs/effects](https://protohiro.com/labs/effects)
+
 ## Packages
 
 - `@protohiro/effects-core`: shared runtime utilities.
@@ -53,6 +55,7 @@ Protohiro Effects packages those effects as React hooks that mutate only `classL
 Single-element gradient border with `border-radius` support and a graceful Safari fallback.
 
 Options:
+
 - `thickness?: string | number`
 - `radius?: string | number`
 - `colors?: string`
@@ -64,6 +67,7 @@ Options:
 Adds a restrained glass highlight layer tuned for premium dark surfaces.
 
 Options:
+
 - `color?: string`
 - `edgeOpacity?: number`
 - `sheenOpacity?: number`
@@ -80,6 +84,7 @@ Options:
 Lightweight supporting glow for composition. Useful, but simpler than the core hard effects.
 
 Options:
+
 - `color?: string`
 - `blur?: string | number`
 - `spread?: string | number`
@@ -91,6 +96,7 @@ Options:
 Noise overlay for textured surfaces and layered compositions.
 
 Options:
+
 - `size?: string | number`
 - `intensity?: number`
 - `disabled?: boolean`
@@ -100,6 +106,7 @@ Options:
 Interactive spotlight and reveal effect for premium cards, media, and CTA surfaces.
 
 Options:
+
 - `mode?: 'glow' | 'reveal'`
 - `size?: string | number`
 - `intensity?: number`
