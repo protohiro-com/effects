@@ -4,15 +4,10 @@ Protohiro Effects is a zero-wrapper React library for hard CSS effects on existi
 
 Built for design systems and app UIs that need premium effects without extra DOM nodes, layout shifts, or runtime layout measurements.
 
-## Live demo
-
-[libs.protohiro.com/effects](https://libs.protohiro.com/effects/)
-
 ## Packages
 
 - `@protohiro/effects-core`: shared runtime utilities.
 - `@protohiro/effects`: React hooks and effect styles.
-- `@protohiro/effects-demo`: local demo app.
 
 ## Quick start
 
@@ -144,6 +139,5 @@ Hooks are composable because each effect writes only namespaced classes (`pe-*`)
 pnpm lint
 pnpm typecheck
 pnpm test
-pnpm test:visual
 pnpm size
 ```

@@ -1,9 +1,6 @@
 node_modules
 dist
 coverage
-.vite
-.playwright
-playwright-report
 test-results
 *.tsbuildinfo
 .DS_Store

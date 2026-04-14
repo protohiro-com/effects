@@ -17,6 +17,10 @@ The library targets effects that are awkward to ship by hand because of pseudo-e
 npm install @protohiro/effects
 ```
 
+Peer dependencies:
+- `react: ^18 || ^19`
+- `react-dom: ^18 || ^19`
+
 ## Quick start
 
 ```tsx

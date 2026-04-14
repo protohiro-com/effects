@@ -9,8 +9,8 @@ Use `codex/<lane>-<task>` branch names.
 Keep PRs single-lane:
 - infra/core
 - single effect
-- tests/visuals
-- docs/demo
+- tests
+- docs
 
 ## Definition of done
 
@@ -26,6 +26,6 @@ Every PR must include:
 1. infra
 2. core runtime
 3. effects
-4. visual tests
-5. docs/demo
+4. tests
+5. docs
 6. release

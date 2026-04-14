@@ -5,7 +5,6 @@ node_modules
 dist
 **/dist
 coverage
-playwright-report
 test-results
 .pnpm-store
 .DS_Store
