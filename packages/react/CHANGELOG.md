@@ -1,5 +1,13 @@
 # @protohiro/effects
 
+## 0.3.4
+
+### Patch Changes
+
+- e2be321: Update the package demo link to `https://protohiro.com/labs/effects` in the npm metadata and published README.
+
+  This keeps the npm package page aligned with the current hosted demo URL.
+
 ## 0.3.3
 
 ### Patch Changes
