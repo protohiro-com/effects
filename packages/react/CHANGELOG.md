@@ -1,5 +1,13 @@
 # @protohiro/effects
 
+## 0.3.3
+
+### Patch Changes
+
+- 21d70b2: Expand peer dependency compatibility to support React 19 and React DOM 19.
+
+  This removes installation conflicts in apps using React 19 while keeping React 18 support.
+
 ## 0.3.2
 
 ### Patch Changes
