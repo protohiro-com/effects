@@ -14,8 +14,15 @@ export const EFFECT_STYLES = `
   border-radius: calc(var(--pe-gb-radius, 0px) + var(--pe-gb-thickness, 2px));
   box-sizing: border-box;
   padding: var(--pe-gb-thickness, 2px);
-  background: linear-gradient(var(--pe-gb-angle, 120deg), var(--pe-gb-colors, #5eead4, #0ea5e9));
+  background: conic-gradient(
+    from calc(var(--pe-gb-angle, 120deg) + var(--pe-gb-flow-progress, 0) * 1turn),
+    var(--pe-gb-colors, #5eead4, #0ea5e9)
+  );
   pointer-events: none;
+  animation-name: var(--pe-gb-animation-name, none);
+  animation-duration: var(--pe-gb-animation-duration, 6s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 
   /* Hollow out the center so only the ring remains. */
   -webkit-mask:
@@ -28,6 +35,29 @@ export const EFFECT_STYLES = `
   mask-composite: exclude;
 }
 
+@property --pe-gb-flow-progress {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes pe-gradient-border-flow {
+  from {
+    --pe-gb-flow-progress: 0;
+  }
+
+  to {
+    --pe-gb-flow-progress: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pe-gradient-border::before {
+    animation: none;
+    will-change: auto;
+  }
+}
+
 @supports not ((-webkit-mask-composite: xor) or (mask-composite: exclude)) {
   .pe-gradient-border::before {
     z-index: -1;
@@ -35,7 +65,11 @@ export const EFFECT_STYLES = `
     border-radius: calc(var(--pe-gb-radius, 0px) + var(--pe-gb-thickness, 2px));
     padding: 0;
     border: var(--pe-gb-thickness, 2px) solid;
-    border-image: linear-gradient(var(--pe-gb-angle, 120deg), var(--pe-gb-colors, #5eead4, #0ea5e9)) 1;
+    border-image: conic-gradient(
+        from calc(var(--pe-gb-angle, 120deg) + var(--pe-gb-flow-progress, 0) * 1turn),
+        var(--pe-gb-colors, #5eead4, #0ea5e9)
+      )
+      1;
   }
 }
 

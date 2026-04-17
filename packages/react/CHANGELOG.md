@@ -1,5 +1,11 @@
 # @protohiro/effects
 
+## 0.4.0
+
+### Minor Changes
+
+- Add animated gradient border flow with `animated` and `speed` options, CSS-only conic-gradient motion, reduced-motion fallback, and updated docs/tests.
+
 ## 0.3.4
 
 ### Patch Changes

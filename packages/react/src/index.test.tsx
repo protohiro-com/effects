@@ -11,8 +11,13 @@ import {
   useSpotlightEffect,
 } from './index';
 
-function GradientProbe(props: { thickness?: number }) {
-  const ref = useGradientBorderEffect({ thickness: props.thickness ?? 3, colors: '#f00, #00f' });
+function GradientProbe(props: { thickness?: number; animated?: boolean; speed?: number }) {
+  const ref = useGradientBorderEffect({
+    thickness: props.thickness ?? 3,
+    colors: '#f00, #00f',
+    animated: props.animated,
+    speed: props.speed,
+  });
   return <button ref={ref}>Test</button>;
 }
 
@@ -68,17 +73,51 @@ function ComposedProbe() {
 
 describe('react effect hooks', () => {
   it('attaches and detaches class and vars', () => {
-    const { container, unmount } = render(<GradientProbe thickness={4} />);
+    const { container, unmount } = render(<GradientProbe thickness={4} animated speed={2} />);
     const button = container.querySelector('button');
 
     expect(button).not.toBeNull();
     expect(button?.classList.contains('pe-gradient-border')).toBe(true);
     expect(button?.style.getPropertyValue('--pe-gb-thickness')).toBe('4px');
+    expect(button?.style.getPropertyValue('--pe-gb-animation-duration')).toBe('3s');
+    expect(button?.style.getPropertyValue('--pe-gb-animation-name')).toBe('pe-gradient-border-flow');
 
     unmount();
 
     expect(button?.classList.contains('pe-gradient-border')).toBe(false);
     expect(button?.style.getPropertyValue('--pe-gb-thickness')).toBe('');
+    expect(button?.style.getPropertyValue('--pe-gb-animation-duration')).toBe('');
+    expect(button?.style.getPropertyValue('--pe-gb-animation-name')).toBe('');
+  });
+
+  it('toggles gradient border animation via options change', () => {
+    function Probe() {
+      const [animated, setAnimated] = useState(false);
+      const [speed, setSpeed] = useState(1);
+      const ref = useGradientBorderEffect({ thickness: 2, colors: '#f00, #00f', animated, speed });
+
+      return (
+        <>
+          <button ref={ref}>Test</button>
+          <button onClick={() => setAnimated((value) => !value)}>Toggle</button>
+          <button onClick={() => setSpeed(2)}>Faster</button>
+        </>
+      );
+    }
+
+    const { container, getByRole } = render(<Probe />);
+    const target = container.querySelector('button');
+
+    expect(target?.style.getPropertyValue('--pe-gb-animation-duration')).toBe('6s');
+    expect(target?.style.getPropertyValue('--pe-gb-animation-name')).toBe('none');
+
+    fireEvent.click(getByRole('button', { name: 'Toggle' }));
+
+    expect(target?.style.getPropertyValue('--pe-gb-animation-name')).toBe('pe-gradient-border-flow');
+
+    fireEvent.click(getByRole('button', { name: 'Faster' }));
+
+    expect(target?.style.getPropertyValue('--pe-gb-animation-duration')).toBe('3s');
   });
 
   it('updates css vars on options change', () => {

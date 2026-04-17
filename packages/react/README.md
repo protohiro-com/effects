@@ -28,7 +28,7 @@ Peer dependencies:
 import { useGradientBorderEffect } from '@protohiro/effects';
 
 export function Button() {
-  const ref = useGradientBorderEffect({ thickness: 2, angle: 90 });
+  const ref = useGradientBorderEffect({ thickness: 2, angle: 90, animated: true });
   return <button ref={ref}>Click</button>;
 }
 ```
@@ -58,6 +58,18 @@ export function Button() {
 ### `useGradientBorderEffect(options)`
 
 Gradient border ring on a single existing element with `border-radius` support and graceful fallback behavior.
+
+Options:
+
+- `thickness?: string | number`
+- `radius?: string | number`
+- `colors?: string`
+- `angle?: string | number`
+- `animated?: boolean`
+- `speed?: number`
+- `disabled?: boolean`
+
+When `animated` is enabled, the gradient colors flow around the border with CSS only. `speed` is a multiplier: `1` is the default, values above `1` are faster, and values below `1` are slower. The effect respects `prefers-reduced-motion` and falls back to a static ring when motion is reduced.
 
 ### `useSpotlightEffect(options)`
 

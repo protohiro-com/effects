@@ -8,6 +8,8 @@ export interface GradientBorderOptions extends EffectBaseOptions {
   radius?: string | number;
   colors?: string;
   angle?: string | number;
+  animated?: boolean;
+  speed?: number;
 }
 
 export interface GlowOptions extends EffectBaseOptions {
